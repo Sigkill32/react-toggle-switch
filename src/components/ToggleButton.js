@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles.css'
-import PropTypes from 'prop-types'
+import PropTypes, { resetWarningCache } from 'prop-types'
 
 const SLIDER_WIDTH = 30
 
@@ -11,7 +11,7 @@ class ToggleButton extends Component {
   };
 
   componentDidMount() {
-    const { initState, buttonStates, textData } = this.props
+    const { initState, buttonStates } = this.props
     if (buttonStates === 2) this.setState({ toggle: initState })
     else this.setState({ state: 1 })
   }
@@ -28,7 +28,7 @@ class ToggleButton extends Component {
         onChange(1)
       } else {
         onChange(state + 1)
-        this.setState(prevState => ({state: prevState.state + 1}))
+        this.setState(prevState => ({ state: prevState.state + 1 }))
       }
     }
   };
@@ -52,10 +52,16 @@ class ToggleButton extends Component {
     if (state === 1) {
       if (classNames) return `${styles.slider} ${classNames.slider}`
       else return `${styles.slider}`
-    } else {
+    }
+    if (state === 2) {
       if (classNames) {
         return `${styles.slider} ${styles.slideRight} ${classNames.slider}`
       } else return `${styles.slider} ${styles.slideRight}`
+    }
+    if (state === 3) {
+      if (classNames) {
+        return `${styles.slider} ${styles.slideRight} ${classNames.slider}`
+      } else return `${styles.slider} ${styles.slideRight} ${styles.slideThirdRight}`
     }
   };
 
@@ -68,6 +74,14 @@ class ToggleButton extends Component {
       }
     } else return togglerWidth
   };
+
+  getDataText = () => {
+    const { state } = this.state
+    const { textData } = this.props
+    if (state === 1) return textData.stateOne
+    if (state === 2) return textData.stateTwo
+    if (state === 3) return textData.stateThree
+  }
 
   render() {
     const { toggle } = this.state
@@ -96,7 +110,11 @@ class ToggleButton extends Component {
         id={id}
       >
         <div
-          className={this.getSliderClassName()}
+          className={
+            buttonStates === 2
+              ? this.getSliderClassName()
+              : this.get3StateSliderClassName()
+          }
           style={{
             backgroundColor: toggle ? onColor : offColor,
             width: this.getContainerWidth().sliderWidth,
@@ -106,7 +124,7 @@ class ToggleButton extends Component {
           {buttonStates === 2 ? (
             <span>{toggle ? textData.stateOne : textData.stateTwo}</span>
           ) : (
-            <span>3states</span>
+            <span>{this.getDataText()}</span>
           )}
         </div>
       </div>

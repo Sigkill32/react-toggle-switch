@@ -8,7 +8,7 @@ export default class App extends Component {
 
   handleChange = toggleState => {
     // this.setState({ toggleState });
-    console.log(toggleState)
+    // console.log(toggleState)
   };
 
   render() {

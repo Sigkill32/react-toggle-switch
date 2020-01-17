@@ -28,7 +28,11 @@ span {
 }
 
 .slideRight {
-    transform: translateX(40px);
+    transform: translateX(35px);
+}
+
+.slideThirdRight {
+    transform:  translateX(70px);
 }
 
 .slideLeft {
