@@ -74,7 +74,8 @@ class ToggleButton extends Component {
       }
     } else {
       return {
-        containerWidth: `${(togglerWidth.containerWidth)}`
+        containerWidth: `${(togglerWidth + 6) * buttonStates}px`,
+        sliderWidth: `${togglerWidth}px`
       }
     }
   };
