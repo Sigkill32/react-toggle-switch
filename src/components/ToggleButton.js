@@ -147,7 +147,7 @@ class ToggleButton extends Component {
 
 ToggleButton.defaultProps = {
   buttonDesign: 'rounded',
-  textData: { stateOne: 'M', stateTwo: 'F', stateThree: 'T' },
+  textData: { stateOne: '1', stateTwo: '2', stateThree: '3' },
   initState: true,
   onChange: null,
   classNames: null,
