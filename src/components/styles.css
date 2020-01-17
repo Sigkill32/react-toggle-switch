@@ -1,0 +1,41 @@
+.outer {
+  height: 36px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  align-items: center;
+  overflow: hidden;
+}
+
+span {
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.hideSpan {
+    visibility: hidden;
+}
+
+.slider {
+    display: flex;
+    height: 30px;
+    transition: 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+}
+
+.slideRight {
+    transform: translateX(40px);
+}
+
+.slideLeft {
+    left: 0;
+}
+
+@keyframes gel{
+    from { height: 30px};
+    to {height: 60px;}
+}
