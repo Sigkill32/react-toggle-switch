@@ -61,7 +61,7 @@ class ToggleButton extends Component {
     if (state === 3) {
       if (classNames) {
         return `${styles.slider} ${styles.slideRight} ${classNames.slider}`
-      } else return `${styles.slider} ${styles.slideRight} ${styles.slideThirdRight}`
+      } else { return `${styles.slider} ${styles.slideRight} ${styles.slideThirdRight}` }
     }
   };
 
@@ -90,15 +90,22 @@ class ToggleButton extends Component {
     if (state === 1) return textData.stateOne
     if (state === 2) return textData.stateTwo
     if (state === 3) return textData.stateThree
+  };
+
+  getTheme = () => {
+    const { togglerTheme, buttonStates } = this.props
+    const { state, toggle } = this.state
+    if (buttonStates === 3) {
+      for (let i = 0; i < 3; i += 1) if (state === i + 1) return togglerTheme[i]
+    } else {
+      if (toggle) return togglerTheme[0]
+      else return togglerTheme[1]
+    }
   }
 
   render() {
-    const { toggle } = this.state
     const {
       buttonDesign,
-      textData,
-      onColor,
-      offColor,
       classNames,
       id,
       buttonStates,
@@ -112,7 +119,7 @@ class ToggleButton extends Component {
         }
         onClick={this.handleToggle}
         style={{
-          backgroundColor: toggle ? '#d7e3e3' : '#fcebeb',
+          backgroundColor: this.getTheme().bg,
           width: this.getContainerWidth().containerWidth,
           borderRadius: buttonDesign === 'rounded' ? '20px' : '3px'
         }}
@@ -125,12 +132,12 @@ class ToggleButton extends Component {
               : this.get3StateSliderClassName()
           }
           style={{
-            backgroundColor: toggle ? onColor : offColor,
+            backgroundColor: this.getTheme().knob,
             width: this.getContainerWidth().sliderWidth,
             borderRadius: buttonDesign === 'rounded' ? '50%' : '3px'
           }}
         >
-          <span style={{fontSize: fontSize}}>{this.getDataText()}</span>
+          <span style={{ fontSize: fontSize }}>{this.getDataText()}</span>
         </div>
       </div>
     )
@@ -142,14 +149,17 @@ ToggleButton.defaultProps = {
   textData: { stateOne: 'M', stateTwo: 'F', stateThree: 'T' },
   initState: true,
   onChange: null,
-  onColor: '#03A9F4',
-  offColor: '#f44336',
   classNames: null,
   id: `button-container-${Math.floor(Math.random() * 100000 + 1)}`,
   animation: { textDataVisibility: false, type: 'slide', duration: '0.3s' },
   togglerWidth: null,
   buttonStates: 2,
-  fontSize: '10px'
+  fontSize: '10px',
+  togglerTheme: [
+    { knob: '#03A9F4', bg: '#d7e3e3' },
+    { knob: '#f44336', bg: '#fcebeb' },
+    { knob: '#fcba03', bg: '#fff0c7' }
+  ]
 }
 
 ToggleButton.propTypes = {
@@ -161,8 +171,6 @@ ToggleButton.propTypes = {
   }),
   initState: PropTypes.bool,
   onChange: PropTypes.func,
-  onColor: PropTypes.string,
-  offColor: PropTypes.string,
   classNames: PropTypes.shape({
     container: PropTypes.string,
     slider: PropTypes.string
@@ -175,7 +183,8 @@ ToggleButton.propTypes = {
   }),
   togglerWidth: PropTypes.number,
   buttonStates: PropTypes.number,
-  fontSize: PropTypes.string
+  fontSize: PropTypes.string,
+  togglerTheme: PropTypes.array
 }
 
 export default ToggleButton
