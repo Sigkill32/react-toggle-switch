@@ -134,6 +134,7 @@ class ToggleButton extends Component {
           style={{
             backgroundColor: this.getTheme().knob,
             width: this.getContainerWidth().sliderWidth,
+            color: this.getTheme().color,
             borderRadius: buttonDesign === 'rounded' ? '50%' : '3px'
           }}
         >
@@ -156,9 +157,9 @@ ToggleButton.defaultProps = {
   buttonStates: 2,
   fontSize: '10px',
   togglerTheme: [
-    { knob: '#03A9F4', bg: '#d7e3e3' },
-    { knob: '#f44336', bg: '#fcebeb' },
-    { knob: '#fcba03', bg: '#fff0c7' }
+    { knob: '#03A9F4', bg: '#d7e3e3', color: 'white' },
+    { knob: '#f44336', bg: '#fcebeb', color: 'white' },
+    { knob: '#fcba03', bg: '#fff0c7', color: 'white' }
   ]
 }
 
