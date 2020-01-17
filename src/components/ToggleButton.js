@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import styles from './styles.css'
 import PropTypes from 'prop-types'
 
-const SLIDER_WIDTH = 30
-
 class ToggleButton extends Component {
   state = {
     toggle: true,
@@ -60,23 +58,16 @@ class ToggleButton extends Component {
     }
     if (state === 3) {
       if (classNames) {
-        return `${styles.slider} ${styles.slideRight} ${classNames.slider}`
-      } else { return `${styles.slider} ${styles.slideRight} ${styles.slideThirdRight}` }
+        return `${styles.slider} ${styles.slideRight} ${classNames.slider} ${styles.slideThirdRight}`
+      } else { return `${styles.slider} ${styles.slideThirdRight}` }
     }
   };
 
   getContainerWidth = () => {
     const { togglerWidth, buttonStates } = this.props
-    if (!togglerWidth) {
-      return {
-        containerWidth: `${(SLIDER_WIDTH + 6) * buttonStates}px`,
-        sliderWidth: `${SLIDER_WIDTH}px`
-      }
-    } else {
-      return {
-        containerWidth: `${(togglerWidth + 6) * buttonStates}px`,
-        sliderWidth: `${togglerWidth}px`
-      }
+    return {
+      containerWidth: `${(togglerWidth + 6) * buttonStates}px`,
+      sliderWidth: `${togglerWidth}px`
     }
   };
 
@@ -153,7 +144,7 @@ ToggleButton.defaultProps = {
   classNames: null,
   id: `button-container-${Math.floor(Math.random() * 100000 + 1)}`,
   animation: { textDataVisibility: false, type: 'slide', duration: '0.3s' },
-  togglerWidth: null,
+  togglerWidth: 30,
   buttonStates: 2,
   fontSize: '10px',
   togglerTheme: [

@@ -20,7 +20,7 @@ export default class App extends Component {
         <ToggleButton
           onChange={this.handleChange}
           initState={true}
-          buttonDesign='rounded'
+          buttonDesign='angled'
           buttonStates={3}
           fontSize='12px'
         />
