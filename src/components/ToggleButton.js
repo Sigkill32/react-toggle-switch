@@ -81,8 +81,12 @@ class ToggleButton extends Component {
   };
 
   getDataText = () => {
-    const { state } = this.state
-    const { textData } = this.props
+    const { state, toggle } = this.state
+    const { textData, buttonStates } = this.props
+    if (buttonStates === 2) {
+      if (toggle) return textData.stateOne
+      else return textData.stateTwo
+    }
     if (state === 1) return textData.stateOne
     if (state === 2) return textData.stateTwo
     if (state === 3) return textData.stateThree
@@ -97,7 +101,8 @@ class ToggleButton extends Component {
       offColor,
       classNames,
       id,
-      buttonStates
+      buttonStates,
+      fontSize
     } = this.props
 
     return (
@@ -125,11 +130,7 @@ class ToggleButton extends Component {
             borderRadius: buttonDesign === 'rounded' ? '50%' : '3px'
           }}
         >
-          {buttonStates === 2 ? (
-            <span>{toggle ? textData.stateOne : textData.stateTwo}</span>
-          ) : (
-            <span>{this.getDataText()}</span>
-          )}
+          <span style={{fontSize: fontSize}}>{this.getDataText()}</span>
         </div>
       </div>
     )
@@ -147,7 +148,8 @@ ToggleButton.defaultProps = {
   id: `button-container-${Math.floor(Math.random() * 100000 + 1)}`,
   animation: { textDataVisibility: false, type: 'slide', duration: '0.3s' },
   togglerWidth: null,
-  buttonStates: 2
+  buttonStates: 2,
+  fontSize: '10px'
 }
 
 ToggleButton.propTypes = {
@@ -172,7 +174,8 @@ ToggleButton.propTypes = {
     duration: PropTypes.string
   }),
   togglerWidth: PropTypes.number,
-  buttonStates: PropTypes.number
+  buttonStates: PropTypes.number,
+  fontSize: PropTypes.string
 }
 
 export default ToggleButton
