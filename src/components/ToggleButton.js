@@ -31,37 +31,17 @@ class ToggleButton extends Component {
     }
   };
 
-  getSliderClassName = () => {
-    const { classNames } = this.props
-    const { toggle } = this.state
-    if (toggle) {
-      if (classNames) return `${styles.slider} ${classNames.slider}`
-      else return `${styles.slider}`
+  getTransform = () => {
+    const { buttonStates, togglerWidth } = this.props
+    const { toggle, state } = this.state
+    if (buttonStates === 3) {
+      if (state === 2) return `translateX(${togglerWidth + 6}px)`
+      if (state === 3) return `translateX(${(togglerWidth + 6) * 2}px)`
     } else {
-      if (classNames) {
-        return `${styles.slider} ${styles.slideRight} ${classNames.slider}`
-      } else return `${styles.slider} ${styles.slideRight}`
+      if (!toggle) return `translateX(${togglerWidth + 6}px)`
     }
-  };
-
-  get3StateSliderClassName = () => {
-    const { classNames } = this.props
-    const { state } = this.state
-    if (state === 1) {
-      if (classNames) return `${styles.slider} ${classNames.slider}`
-      else return `${styles.slider}`
-    }
-    if (state === 2) {
-      if (classNames) {
-        return `${styles.slider} ${styles.slideRight} ${classNames.slider}`
-      } else return `${styles.slider} ${styles.slideRight}`
-    }
-    if (state === 3) {
-      if (classNames) {
-        return `${styles.slider} ${styles.slideRight} ${classNames.slider} ${styles.slideThirdRight}`
-      } else { return `${styles.slider} ${styles.slideThirdRight}` }
-    }
-  };
+    return ''
+  }
 
   getContainerWidth = () => {
     const { togglerWidth, buttonStates } = this.props
@@ -117,16 +97,13 @@ class ToggleButton extends Component {
         id={id}
       >
         <div
-          className={
-            buttonStates === 2
-              ? this.getSliderClassName()
-              : this.get3StateSliderClassName()
-          }
+          className={classNames ? `${styles.slider} ${classNames.slider}` : styles.slider}
           style={{
             backgroundColor: this.getTheme().knob,
             width: this.getContainerWidth().sliderWidth,
             color: this.getTheme().color,
-            borderRadius: buttonDesign === 'rounded' ? '50%' : '3px'
+            borderRadius: buttonDesign === 'rounded' ? '50%' : '3px',
+            transform: this.getTransform()
           }}
         >
           <span style={{ fontSize: fontSize }}>{this.getDataText()}</span>
