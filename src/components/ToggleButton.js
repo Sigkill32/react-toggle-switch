@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles.css'
-import PropTypes, { resetWarningCache } from 'prop-types'
+import PropTypes from 'prop-types'
 
 const SLIDER_WIDTH = 30
 
@@ -69,10 +69,14 @@ class ToggleButton extends Component {
     const { togglerWidth, buttonStates } = this.props
     if (!togglerWidth) {
       return {
-        containerWidth: `${(SLIDER_WIDTH + 3) * buttonStates + 10}px`,
+        containerWidth: `${(SLIDER_WIDTH + 6) * buttonStates}px`,
         sliderWidth: `${SLIDER_WIDTH}px`
       }
-    } else return togglerWidth
+    } else {
+      return {
+        containerWidth: `${(togglerWidth.containerWidth)}`
+      }
+    }
   };
 
   getDataText = () => {
@@ -92,7 +96,6 @@ class ToggleButton extends Component {
       offColor,
       classNames,
       id,
-      animation,
       buttonStates
     } = this.props
 
@@ -134,7 +137,7 @@ class ToggleButton extends Component {
 
 ToggleButton.defaultProps = {
   buttonDesign: 'rounded',
-  textData: { stateOne: 'YES', stateTwo: 'NO', stateThree: 'NA' },
+  textData: { stateOne: 'M', stateTwo: 'F', stateThree: 'T' },
   initState: true,
   onChange: null,
   onColor: '#03A9F4',
@@ -167,10 +170,7 @@ ToggleButton.propTypes = {
     buttonDesign: PropTypes.string,
     duration: PropTypes.string
   }),
-  togglerWidth: PropTypes.shape({
-    containerWidth: PropTypes.string,
-    sliderWidth: PropTypes.string
-  }),
+  togglerWidth: PropTypes.number,
   buttonStates: PropTypes.number
 }
 

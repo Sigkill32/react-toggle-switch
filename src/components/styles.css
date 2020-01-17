@@ -11,7 +11,7 @@
 
 span {
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .hideSpan {
@@ -28,11 +28,11 @@ span {
 }
 
 .slideRight {
-    transform: translateX(35px);
+    transform: translateX(36px);
 }
 
 .slideThirdRight {
-    transform:  translateX(70px);
+    transform:  translateX(72px);
 }
 
 .slideLeft {

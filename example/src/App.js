@@ -12,11 +12,11 @@ export default class App extends Component {
   };
 
   render() {
-    const { toggleState } = this.state;
+    // const { toggleState } = this.state;
     return (
       <div>
         {/* <p>Do you like Pizzas: <span style={{color: toggleState ? 'blue' : 'red'}}>{toggleState ? 'YES' : 'NO'}</span></p> */}
-        <ToggleButton onChange={this.handleChange} initState={true} buttonDesign='angled' buttonStates={3}/>
+        <ToggleButton onChange={this.handleChange} initState={true} buttonDesign='rounded' buttonStates={3}/>
       </div>
     );
   }
