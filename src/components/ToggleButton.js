@@ -74,12 +74,18 @@ class ToggleButton extends Component {
     }
   }
 
+  getButtonRadius = () => {
+    const { buttonDesign, buttonRadius } = this.props
+    if (buttonDesign === 'rounded') return '50%'
+    if (buttonDesign === 'angled') return '3px'
+    if (buttonDesign === 'custom') return buttonRadius
+  }
+
   render() {
     const {
       buttonDesign,
       classNames,
       id,
-      buttonStates,
       fontSize
     } = this.props
 
@@ -102,7 +108,7 @@ class ToggleButton extends Component {
             backgroundColor: this.getTheme().knob,
             width: this.getContainerWidth().sliderWidth,
             color: this.getTheme().color,
-            borderRadius: buttonDesign === 'rounded' ? '50%' : '3px',
+            borderRadius: this.getButtonRadius(),
             transform: this.getTransform()
           }}
         >
@@ -128,7 +134,8 @@ ToggleButton.defaultProps = {
     { knob: '#03A9F4', bg: '#d7e3e3', color: 'white' },
     { knob: '#f44336', bg: '#fcebeb', color: 'white' },
     { knob: '#fcba03', bg: '#fff0c7', color: 'white' }
-  ]
+  ],
+  buttonRadius: null
 }
 
 ToggleButton.propTypes = {
@@ -153,7 +160,8 @@ ToggleButton.propTypes = {
   togglerWidth: PropTypes.number,
   buttonStates: PropTypes.number,
   fontSize: PropTypes.string,
-  togglerTheme: PropTypes.array
+  togglerTheme: PropTypes.array,
+  buttonRadius: PropTypes.number
 }
 
 export default ToggleButton
