@@ -15,7 +15,6 @@ export default class App extends Component {
     // const { toggleState } = this.state;
     return (
       <div style={{margin: '20px'}}>
-        {/* <p>Do you like Pizzas: <span style={{color: toggleState ? 'blue' : 'red'}}>{toggleState ? 'YES' : 'NO'}</span></p> */}
         <ToggleButton
           onChange={this.handleChange}
           initState={true}
@@ -23,6 +22,7 @@ export default class App extends Component {
           buttonStates={3}
           fontSize='12px'
         />
+        <br></br>
         <ToggleButton
           onChange={this.handleChange}
           initState={true}
@@ -30,6 +30,7 @@ export default class App extends Component {
           textData={{ stateOne: 'YES', stateTwo: 'NO' }}
           buttonRadius={{container: '3px', slider: '12px'}}
         />
+        <br></br>
         <ToggleButton
           onChange={this.handleChange}
           initState={true}
