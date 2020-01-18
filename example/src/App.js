@@ -14,17 +14,22 @@ export default class App extends Component {
   render() {
     // const { toggleState } = this.state;
     return (
-      <div style={{margin: '10px'}}>
-        <br></br>
+      <div style={{margin: '20px'}}>
         {/* <p>Do you like Pizzas: <span style={{color: toggleState ? 'blue' : 'red'}}>{toggleState ? 'YES' : 'NO'}</span></p> */}
         <ToggleButton
           onChange={this.handleChange}
           initState={true}
-          buttonDesign='angled'
+          buttonDesign='rounded'
           buttonStates={3}
           fontSize='12px'
         />
-        <br></br>
+        <ToggleButton
+          onChange={this.handleChange}
+          initState={true}
+          buttonDesign='custom'
+          textData={{ stateOne: 'YES', stateTwo: 'NO' }}
+          buttonRadius={{container: '3px', slider: '12px'}}
+        />
         <ToggleButton
           onChange={this.handleChange}
           initState={true}
