@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import styles from './styles.css'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './styles.css';
 
 class ToggleButton extends Component {
   state = {
@@ -9,88 +9,89 @@ class ToggleButton extends Component {
   };
 
   componentDidMount() {
-    const { initState, buttonStates } = this.props
-    console.log(initState, buttonStates)
+    const { initState, buttonStates } = this.props;
     if (buttonStates === 2) {
-      if (initState !== undefined) this.setState({ toggle: initState })
-      else this.setState({ toggle: true })
+      if (initState !== undefined) this.setState({ toggle: initState });
+      else this.setState({ toggle: true });
     }
 
     if (buttonStates === 3) {
-      if (initState !== undefined) this.setState({ state: initState })
-      else this.setState({ state: 1 })
+      if (initState !== undefined) this.setState({ state: initState });
+      else this.setState({ state: 1 });
     }
   }
 
   handleToggle = () => {
-    const { onChange, buttonStates } = this.props
-    const { toggle, state } = this.state
+    const { onChange, buttonStates } = this.props;
+    const { toggle, state } = this.state;
     if (buttonStates === 2) {
-      onChange(!toggle)
-      this.setState(prevState => ({ toggle: !prevState.toggle }))
+      onChange(!toggle);
+      this.setState(prevState => ({ toggle: !prevState.toggle }));
     } else {
       if (state === 3) {
-        this.setState({ state: 1 })
-        onChange(1)
+        this.setState({ state: 1 });
+        onChange(1);
       } else {
-        onChange(state + 1)
-        this.setState(prevState => ({ state: prevState.state + 1 }))
+        onChange(state + 1);
+        this.setState(prevState => ({ state: prevState.state + 1 }));
       }
     }
   };
 
   getTransform = () => {
-    const { buttonStates, togglerWidth } = this.props
-    const { toggle, state } = this.state
+    const { buttonStates, togglerWidth } = this.props;
+    const { toggle, state } = this.state;
     if (buttonStates === 3) {
-      if (state === 2) return `translateX(${togglerWidth + 6}px)`
-      if (state === 3) return `translateX(${(togglerWidth + 6) * 2}px)`
+      if (state === 2) return `translateX(${togglerWidth + 6}px)`;
+      if (state === 3) return `translateX(${(togglerWidth + 6) * 2}px)`;
     } else {
-      if (!toggle) return `translateX(${togglerWidth + 6}px)`
+      if (!toggle) return `translateX(${togglerWidth + 6}px)`;
     }
-    return ''
+    return '';
   };
 
   getContainerWidth = () => {
-    const { togglerWidth, buttonStates } = this.props
+    const { togglerWidth, buttonStates } = this.props;
     return {
       containerWidth: `${(togglerWidth + 6) * buttonStates}px`,
       sliderWidth: `${togglerWidth}px`
-    }
+    };
   };
 
   getDataText = () => {
-    const { state, toggle } = this.state
-    const { textData, buttonStates } = this.props
+    const { state, toggle } = this.state;
+    const { textData, buttonStates } = this.props;
     if (buttonStates === 2) {
-      if (toggle) return textData.stateOne
-      else return textData.stateTwo
+      if (toggle) return textData.stateOne;
+      else return textData.stateTwo;
     }
-    if (state === 1) return textData.stateOne
-    if (state === 2) return textData.stateTwo
-    if (state === 3) return textData.stateThree
+    if (state === 1) return textData.stateOne;
+    if (state === 2) return textData.stateTwo;
+    if (state === 3) return textData.stateThree;
   };
 
   getTheme = () => {
-    const { togglerTheme, buttonStates } = this.props
-    const { state, toggle } = this.state
+    const { togglerTheme, buttonStates } = this.props;
+    const { state, toggle } = this.state;
     if (buttonStates === 3) {
-      for (let i = 0; i < 3; i += 1) { if (state === i + 1) return togglerTheme[i] }
+      for (let i = 0; i < 3; i += 1) {
+        if (state === i + 1) return togglerTheme[i];
+      }
     } else {
-      if (toggle) return togglerTheme[0]
-      else return togglerTheme[1]
+      if (toggle) return togglerTheme[0];
+      else return togglerTheme[1];
     }
   };
 
   getButtonRadius = () => {
-    const { buttonDesign, buttonRadius } = this.props
-    if (buttonDesign === 'rounded') return { slider: '50%', container: '20px' }
-    if (buttonDesign === 'angled') return { slider: '3px', container: '3px' }
-    if (buttonDesign === 'custom') return buttonRadius
+    const { buttonDesign, buttonRadius } = this.props;
+    if (buttonDesign === 'rounded') return { slider: '50%', container: '20px' };
+    if (buttonDesign === 'angled') return { slider: '3px', container: '3px' };
+    if (buttonDesign === 'custom') return buttonRadius;
   };
 
   render() {
-    const { classNames, id, fontSize, overrideInternalStyles } = this.props
+    const { classNames, id, fontSize, overrideInternalStyles } = this.props;
 
     return (
       <div
@@ -102,10 +103,10 @@ class ToggleButton extends Component {
           overrideInternalStyles
             ? null
             : {
-              backgroundColor: this.getTheme().bg,
-              width: this.getContainerWidth().containerWidth,
-              borderRadius: this.getButtonRadius().container
-            }
+                backgroundColor: this.getTheme().bg,
+                width: this.getContainerWidth().containerWidth,
+                borderRadius: this.getButtonRadius().container
+              }
         }
         id={id}
       >
@@ -117,18 +118,18 @@ class ToggleButton extends Component {
             overrideInternalStyles
               ? null
               : {
-                backgroundColor: this.getTheme().knob,
-                width: this.getContainerWidth().sliderWidth,
-                color: this.getTheme().color,
-                borderRadius: this.getButtonRadius().slider,
-                transform: this.getTransform()
-              }
+                  backgroundColor: this.getTheme().knob,
+                  width: this.getContainerWidth().sliderWidth,
+                  color: this.getTheme().color,
+                  borderRadius: this.getButtonRadius().slider,
+                  transform: this.getTransform()
+                }
           }
         >
           <span style={{ fontSize: fontSize }}>{this.getDataText()}</span>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -149,7 +150,7 @@ ToggleButton.defaultProps = {
   ],
   buttonRadius: null,
   overrideInternalStyles: false
-}
+};
 
 ToggleButton.propTypes = {
   buttonDesign: PropTypes.string,
@@ -174,6 +175,6 @@ ToggleButton.propTypes = {
     slider: PropTypes.string
   }),
   overrideInternalStyles: PropTypes.bool
-}
+};
 
-export default ToggleButton
+export default ToggleButton;
