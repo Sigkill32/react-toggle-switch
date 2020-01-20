@@ -4,13 +4,17 @@
 
 [![NPM](https://img.shields.io/npm/v/react-toggle-switch.svg)](https://www.npmjs.com/package/react-toggle-switch) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-<img src="./toggler-demo.gif"></img>
+<img src="./toggler-demo.gif" />
 
 ## Install
 
 ```bash
 npm install --save react-toggle-switch
 ```
+
+## Documentation
+
+Read the full Documentation [here](https://react-multistate-toggler-demo.netlify.com)
 
 ## Advantages
 
