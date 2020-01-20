@@ -22,7 +22,7 @@ Create highly customizable toggle switches with ease. Create toggle switches wit
 
 ```jsx
 import React, { Component } from "react";
-import { ToggleButton } from "react-toggle-button";
+import { ToggleButton } from "react-multistate-toggler";
 
 export default class App extends Component {
   state = {
@@ -54,7 +54,7 @@ export default class App extends Component {
 
 ```jsx
 import React, { Component } from "react";
-import { ToggleButton } from "react-toggle-button";
+import { ToggleButton } from "react-multistate-toggler";
 
 export default class App extends Component {
   state = {

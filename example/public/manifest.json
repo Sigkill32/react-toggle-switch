@@ -1,6 +1,6 @@
 {
-  "short_name": "react-toggle-button",
-  "name": "react-toggle-button",
+  "short_name": "react-multistate-toggler",
+  "name": "react-multistate-toggler",
   "icons": [
     {
       "src": "favicon.ico",

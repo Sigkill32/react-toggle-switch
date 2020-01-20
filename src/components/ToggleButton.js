@@ -10,8 +10,16 @@ class ToggleButton extends Component {
 
   componentDidMount() {
     const { initState, buttonStates } = this.props
-    if (buttonStates === 2) this.setState({ toggle: initState })
-    else this.setState({ state: 1 })
+    console.log(initState, buttonStates)
+    if (buttonStates === 2) {
+      if (initState !== undefined) this.setState({ toggle: initState })
+      else this.setState({ toggle: true })
+    }
+
+    if (buttonStates === 3) {
+      if (initState !== undefined) this.setState({ state: initState })
+      else this.setState({ state: 1 })
+    }
   }
 
   handleToggle = () => {
@@ -127,11 +135,10 @@ class ToggleButton extends Component {
 ToggleButton.defaultProps = {
   buttonDesign: 'rounded',
   textData: { stateOne: '1', stateTwo: '2', stateThree: '3' },
-  initState: true,
+  initState: undefined,
   onChange: null,
   classNames: null,
   id: `button-container-${Math.floor(Math.random() * 100000 + 1)}`,
-  animation: { textDataVisibility: false, type: 'slide', duration: '0.3s' },
   togglerWidth: 30,
   buttonStates: 2,
   fontSize: '10px',
@@ -158,11 +165,6 @@ ToggleButton.propTypes = {
     slider: PropTypes.string
   }),
   id: PropTypes.string,
-  animation: PropTypes.shape({
-    textDataVisibility: PropTypes.bool,
-    buttonDesign: PropTypes.string,
-    duration: PropTypes.string
-  }),
   togglerWidth: PropTypes.number,
   buttonStates: PropTypes.number,
   fontSize: PropTypes.string,

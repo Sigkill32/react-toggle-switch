@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ToggleButton } from "react-toggle-button";
+import { ToggleButton } from "react-multistate-toggler";
 import "./index.css";
 
 export default class App extends Component {
@@ -45,7 +45,7 @@ export default class App extends Component {
           </p>
           <ToggleButton
             onChange={this.handleCat}
-            initState={true}
+            initState={1}
             buttonDesign='angled'
             buttonStates={3}
             fontSize='12px'

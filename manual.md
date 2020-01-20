@@ -12,8 +12,8 @@ The first step is to clone this repo and rename / replace all boilerplate names 
 
 ```bash
 # clone and rename base boilerplate repo
-git clone https://github.com/transitive-bullshit/react-toggle-button.git
-mv react-toggle-button react-poop-emoji
+git clone https://github.com/transitive-bullshit/react-multistate-toggler.git
+mv react-multistate-toggler react-poop-emoji
 cd react-poop-emoji
 rm -rf .git
 ```
@@ -22,7 +22,7 @@ rm -rf .git
 # replace boilerplate placeholders with your module-specific values
 # NOTE: feel free to use your favorite find & replace method instead of sed
 mv readme.template.md readme.md
-sed -i 's/react-toggle-button/react-poop-emoji/g' *.{json,md} src/*.js example/*.json example/src/*.js example/public/*.{html,json}
+sed -i 's/react-multistate-toggler/react-poop-emoji/g' *.{json,md} src/*.js example/*.json example/src/*.js example/public/*.{html,json}
 sed -i 's/transitive-bullshit/your-github-username/g' package.json example/package.json
 ```
 
@@ -78,8 +78,8 @@ Here is an example react module created from this guide: [react-background-slide
 
 ### Multiple Named Exports
 
-Here is a [branch](https://github.com/transitive-bullshit/react-toggle-button/tree/feature/multiple-exports) which demonstrates how to create a module with multiple named exports. The module in this branch exports two components, `Foo` and `Bar`, and shows how to use them from the example app.
+Here is a [branch](https://github.com/transitive-bullshit/react-multistate-toggler/tree/feature/multiple-exports) which demonstrates how to create a module with multiple named exports. The module in this branch exports two components, `Foo` and `Bar`, and shows how to use them from the example app.
 
 ### Material-UI
 
-Here is a [branch](https://github.com/transitive-bullshit/react-toggle-button/tree/feature/material-ui) which demonstrates how to create a module that makes use of a relatively complicated peer dependency, [material-ui](https://github.com/mui-org/material-ui). It shows the power of [rollup-plugin-peer-deps-external](https://www.npmjs.com/package/rollup-plugin-peer-deps-external) which makes it a breeze to create reusable modules that include complicated material-ui subcomponents without having them bundled as a part of your module.
+Here is a [branch](https://github.com/transitive-bullshit/react-multistate-toggler/tree/feature/material-ui) which demonstrates how to create a module that makes use of a relatively complicated peer dependency, [material-ui](https://github.com/mui-org/material-ui). It shows the power of [rollup-plugin-peer-deps-external](https://www.npmjs.com/package/rollup-plugin-peer-deps-external) which makes it a breeze to create reusable modules that include complicated material-ui subcomponents without having them bundled as a part of your module.

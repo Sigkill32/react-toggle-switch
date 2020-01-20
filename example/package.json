@@ -1,6 +1,6 @@
 {
-  "name": "react-toggle-button-example",
-  "homepage": "https://Sigkill32.github.io/react-toggle-button",
+  "name": "react-multistate-toggler-example",
+  "homepage": "https://Sigkill32.github.io/react-multistate-toggler",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -8,7 +8,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-toggle-button": "link:..",
+    "react-multistate-toggler": "link:..",
     "react-scripts": "^1.1.4"
   },
   "scripts": {
