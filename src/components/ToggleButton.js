@@ -159,7 +159,7 @@ ToggleButton.propTypes = {
     stateTwo: PropTypes.string,
     stateThree: PropTypes.string
   }),
-  initState: PropTypes.bool,
+  initState: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   onChange: PropTypes.func,
   classNames: PropTypes.shape({
     container: PropTypes.string,
