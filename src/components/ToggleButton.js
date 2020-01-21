@@ -74,14 +74,11 @@ class ToggleButton extends Component {
     const { togglerTheme, buttonStates } = this.props;
     const { state, toggle } = this.state;
     if (buttonStates === 3) {
-      for (let i = 0; i < 3; i += 1) {
-        if (state === i + 1) return togglerTheme[i];
-      }
+      return togglerTheme[state - 1];
     } else {
       if (toggle) return togglerTheme[0];
       return togglerTheme[1];
     }
-    return null;
   };
 
   getButtonRadius = () => {
