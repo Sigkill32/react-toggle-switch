@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ToggleButton } from "react-multistate-toggler";
+import ToggleButton from "react-multistate-toggler";
 import "./index.css";
 
 export default class App extends Component {
